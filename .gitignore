@@ -1,5 +1,5 @@
+sciqus-ai-chatbot/
 .env
 __pycache__/
 *.pyc
 venv/
-node_modules/
