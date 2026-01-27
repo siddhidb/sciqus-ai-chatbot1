@@ -1,0 +1,12 @@
+{
+  "Ticketing": {
+    "description": "Helps track and resolve issues in one place.",
+    "sub_features": [
+      "Ticket creation",
+      "Priority & SLA",
+      "Assignment rules",
+      "Status tracking"
+    ],
+    "url": "https://sciqus.com/ams/ticketing"
+  }
+}

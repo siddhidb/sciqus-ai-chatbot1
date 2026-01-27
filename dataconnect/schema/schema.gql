@@ -1,0 +1,44 @@
+type User @table {
+  username: String!
+  email: String!
+  createdAt: Timestamp!
+  displayName: String
+  photoUrl: String
+  bio: String
+  location: String
+}
+
+type Category @table {
+  name: String!
+  slug: String!
+  description: String
+}
+
+type Item @table {
+  title: String!
+  description: String!
+  category: Category!
+  status: String!
+  createdAt: Timestamp!
+  donor: User
+  photoUrls: [String]
+  preferredPickupTimes: String
+  deliveryOption: Boolean
+  location: String
+}
+
+type Claim @table {
+  claimedAt: Timestamp!
+  status: String!
+  recipient: User
+  item: Item
+  messageToDonor: String
+}
+
+type Review @table {
+  rating: Int!
+  createdAt: Timestamp!
+  reviewer: User
+  reviewedUser: User
+  comment: String
+}

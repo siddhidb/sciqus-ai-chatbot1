@@ -1,0 +1,12 @@
+Sciqus Infotech is a technology company focused on account management,
+customer retention, and business growth solutions.
+
+Sciqus AMS (Account Management Software) is a flagship product of Sciqus Infotech.
+It helps businesses manage renewals, proposals, opportunities, customer interactions,
+and collaboration.
+
+Sciqus AMS is designed for SaaS companies, IT services companies,
+and businesses that manage long-term customer accounts.
+
+References to “Sciqus”, “Sciqus Infotech”, and “Sciqus AMS” refer
+to the company and its Account Management Software platform.
