@@ -2,7 +2,19 @@ import json
 import os
 from datetime import datetime
 
-LEADS_FILE = "data/leads.json"
+# =========================================
+# SAFE, CROSS-PLATFORM LEAD STORAGE PATH
+# =========================================
+
+BASE_DIR = os.getenv("SCIQUS_DATA_DIR")
+
+if not BASE_DIR:
+    # Windows -> C:\tmp
+    # Linux / Render -> /tmp
+    BASE_DIR = os.path.join(os.path.abspath(os.sep), "tmp")
+
+LEADS_FILE = os.path.join(BASE_DIR, "sciqus_leads.json")
+
 
 def is_business_intent(question: str) -> bool:
     keywords = [
@@ -14,7 +26,6 @@ def is_business_intent(question: str) -> bool:
         "looking for",
         "interested in",
         "how can sciqus help",
-        "how can i take help",
         "want to use sciqus"
     ]
     q = question.lower()
@@ -22,18 +33,28 @@ def is_business_intent(question: str) -> bool:
 
 
 def store_lead(company: str, question: str):
-    lead = {
-        "company": company,
-        "question": question,
-        "timestamp": datetime.utcnow().isoformat()
-    }
+    try:
+        # ✅ ENSURE DIRECTORY EXISTS
+        os.makedirs(BASE_DIR, exist_ok=True)
 
-    leads = []
-    if os.path.exists(LEADS_FILE):
-        with open(LEADS_FILE, "r", encoding="utf-8") as f:
-            leads = json.load(f)
+        lead = {
+            "company": company or "Unknown",
+            "question": question,
+            "timestamp": datetime.utcnow().isoformat()
+        }
 
-    leads.append(lead)
+        leads = []
 
-    with open(LEADS_FILE, "w", encoding="utf-8") as f:
-        json.dump(leads, f, indent=2)
+        if os.path.exists(LEADS_FILE):
+            with open(LEADS_FILE, "r", encoding="utf-8") as f:
+                leads = json.load(f)
+
+        leads.append(lead)
+
+        with open(LEADS_FILE, "w", encoding="utf-8") as f:
+            json.dump(leads, f, indent=2)
+
+        print("✅ Lead stored successfully:", LEADS_FILE)
+
+    except Exception as e:
+        print("❌ Lead storage error:", e)

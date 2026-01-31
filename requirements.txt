@@ -1,9 +1,9 @@
 fastapi
-uvicorn
-python-dotenv
-beautifulsoup4
+uvicorn[standard]
 requests
-playwright
 sentence-transformers
 faiss-cpu
 groq
+python-dotenv
+numpy
+pydantic

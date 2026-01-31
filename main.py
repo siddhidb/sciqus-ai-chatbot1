@@ -1,17 +1,26 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
-from app.core.qa_engine import answer_question
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+from app.api.chat import router as chat_router
 
-class ChatRequest(BaseModel):
-    question: str
+app = FastAPI(
+    title="Sciqus AMS Chatbot",
+    version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def health():
-    return {"status": "Sciqus AMS Chatbot running"}
+    return {
+        "status": "ok",
+        "service": "Sciqus AMS Chatbot"
+    }
 
-@app.post("/chat")
-def chat(req: ChatRequest):
-    answer = answer_question(req.question)
-    return {"answer": answer}
+app.include_router(chat_router)
