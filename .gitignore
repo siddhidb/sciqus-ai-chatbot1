@@ -3,3 +3,9 @@ sciqus-ai-chatbot/
 __pycache__/
 *.pyc
 venv/
+cloudflared.exe
+cloudflared.exe.exe
+*.exe
+
+venv/
+requirements-dev.txt
