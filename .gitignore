@@ -1,11 +1,20 @@
-sciqus-ai-chatbot/
-.env
+# Python
 __pycache__/
 *.pyc
+*.pyo
+
+# Virtual env
 venv/
-cloudflared.exe
-cloudflared.exe.exe
-*.exe
+
+# Environment
+.env
+
+# Logs / runtime data
 data/leads.json
-venv/
+
+# Dev files
 requirements-dev.txt
+
+# Binaries (CRITICAL)
+cloudflared*
+*.exe
