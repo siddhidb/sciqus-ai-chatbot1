@@ -6,6 +6,6 @@ venv/
 cloudflared.exe
 cloudflared.exe.exe
 *.exe
-
+data/leads.json
 venv/
 requirements-dev.txt
