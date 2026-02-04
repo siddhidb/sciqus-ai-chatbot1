@@ -24,3 +24,5 @@ def health():
     }
 
 app.include_router(chat_router)
+
+

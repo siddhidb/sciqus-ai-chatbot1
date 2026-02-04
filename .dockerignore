@@ -4,20 +4,22 @@ __pycache__/
 *.pyd
 
 .env
+venv/
 .git
 .gitignore
-venv/
-node_modules/
-cloudflared.exe
+.vscode/
+.idea/
 
-# ingestion / build-time only
+node_modules/
+*.log
+.DS_Store
+
+# ingestion only
 app/ingestion/
 scripts/
 tests/
 
-# raw data (keep only FAISS + PKL)
+# raw data (not needed)
 data/raw/
 data/manual/
 data/chunks/
-
-*.log
