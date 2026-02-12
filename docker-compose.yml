@@ -1,0 +1,41 @@
+
+
+services:
+  chatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sciqus-chatbot:latest
+    container_name: sciqus-chatbot
+
+    ports:
+      - "8000:8000"
+
+    env_file:
+      - .env
+
+    environment:
+      - ENV=production
+      - HF_HUB_DISABLE_TELEMETRY=1
+
+    volumes:
+      - ./data:/app/data:rw
+
+    restart: unless-stopped
+
+
+
+# services:
+#   chatbot:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     image: sciqus-chatbot:latest
+#     container_name: sciqus-chatbot
+#     ports:
+#       - "8000:8000"
+#     env_file:
+#       - .env
+#     volumes:
+#       - ./data:/app/data:rw
+#     restart: unless-stopped

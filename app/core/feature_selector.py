@@ -1,4 +1,4 @@
-from app.core.groq_client import ask_llm
+from core.groq_client import ask_llm
 from app.knowledge.features import FEATURES
 
 def select_features_for_business(business_type: str):

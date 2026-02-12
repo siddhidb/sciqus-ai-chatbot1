@@ -1,0 +1,30 @@
+# ---- Web / API ----
+fastapi==0.128.0
+uvicorn==0.40.0
+python-multipart==0.0.22
+
+# ---- LLM ----
+groq==0.9.0
+httpx<0.28
+httpx==0.27.0
+
+# ---- RAG Core (STABLE SET) ----
+sentence-transformers==2.7.0
+transformers==4.41.2
+chromadb==1.4.1
+
+langchain-core==1.2.9
+langchain-chroma==1.1.0
+langgraph==1.0.7
+
+# ---- Torch (CPU-only, compatible) ----
+torch==2.0.1
+
+# ---- Utils ----
+python-dotenv==1.2.1
+
+# ---- Safety pins (CRITICAL) ----
+numpy<2.0
+networkx<3.5
+onnxruntime<1.24
+scikit-learn<1.8

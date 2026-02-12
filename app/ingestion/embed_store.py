@@ -1,13 +1,30 @@
-from sentence_transformers import SentenceTransformer
-import faiss, os, pickle
+# app/ingestion/embed_store.py
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
-index = faiss.IndexFlatL2(384)
-store = []
+import uuid
+from datetime import datetime
+from app.core.vectorstore import get_collection
 
-def add(text):
-    emb = model.encode([text])
-    index.add(emb)
-    store.append(text)
 
-pickle.dump((index, store), open("data/embeddings/store.pkl","wb"))
+def embed_and_store(chunks, metadata: dict):
+    print("🔥 embed_and_store CALLED")
+    print("🔥 Number of chunks received:", len(chunks))
+
+    if not chunks:
+        print("❌ NO CHUNKS — EXITING")
+        return
+
+    collection = get_collection()
+    print("🔥 Using collection:", collection.name)
+
+    ids = [str(uuid.uuid4()) for _ in chunks]
+
+    collection.add(
+        documents=chunks,
+        metadatas=[{
+            **metadata,
+            "ingested_at": datetime.utcnow().isoformat()
+        } for _ in chunks],
+        ids=ids
+    )
+
+    print("✅ collection.add() EXECUTED & PERSISTED")

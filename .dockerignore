@@ -1,25 +1,44 @@
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-.env
+# Virtual env
 venv/
-.git
+.venv/
+
+# Env files
+.env
+.env.*
+
+# Git
+.git/
 .gitignore
+
+# IDE
 .vscode/
 .idea/
 
-node_modules/
+# Logs
 *.log
 .DS_Store
 
-# ingestion only
-app/ingestion/
-scripts/
+# Tests & debug
 tests/
+test_*.py
+debug_*.py
 
-# raw data (not needed)
+# Node
+node_modules/
+
+# Data folders (mounted as volume)
 data/raw/
 data/manual/
 data/chunks/
+data/cleaned/
+data/chroma/
+data/uploads/
+
+# Docs
+README.md

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <title>Sciqus AMS – Admin Panel</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+<div class="container">
+  <h1>Sciqus AMS – Admin</h1>
+  <p class="subtitle">Knowledge & Content Management</p>
+
+  <!-- 🔐 AUTH -->
+  <section class="card">
+    <h3>Admin Authentication</h3>
+
+    <input
+      type="password"
+      id="apiKey"
+      placeholder="Enter Admin API Key"
+      autocomplete="off"
+    />
+
+    <button id="verifyBtn" type="button">Verify Key</button>
+    <p id="authStatus" class="status"></p>
+  </section>
+
+  <!-- 🔒 LOCKED AREA -->
+  <div id="adminActions" class="locked">
+
+    <!-- 📄 PDF -->
+    <section class="card">
+      <h3>Upload Knowledge (PDF / DOCX )</h3>
+      <input type="file" id="docFile" accept=".pdf,.docx,.txt" />
+      <button id="uploadPdfBtn" type="button">Upload Document</button>
+    </section>
+
+    <!-- 🌐 WEBSITE -->
+    <section class="card">
+      <h3>Ingest Website</h3>
+      <input type="url" id="websiteUrl" placeholder="https://example.com" />
+      <button id="ingestWebsiteBtn" type="button">Ingest Website</button>
+    </section>
+
+    <!-- 📚 SOURCES -->
+    <section class="card">
+      <h3>Knowledge Sources</h3>
+      <button id="refreshSourcesBtn" type="button">Refresh</button>
+      <ul id="sourcesList"></ul>
+    </section>
+
+  </div>
+</div>
+
+<!-- 🔔 TOAST -->
+<div id="toast"></div>
+
+<script src="admin.js"></script>
+</body>
+</html>
